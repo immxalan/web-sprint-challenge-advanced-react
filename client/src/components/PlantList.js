@@ -3,8 +3,8 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
-constructor(){
-  super()
+constructor(props){
+  super(props)
   this.state = { 
     plants: []
   }
@@ -13,18 +13,26 @@ constructor(){
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
 componentDidMount(){
-  axios
-  .get('http://localhost:3333/plants')
-  .then( res => {
-    this.setState({ plants: res.data})
-    console.log(this.state.plants)
-  })
+ this.setState({plants:this.props.plants})
 }
+// filter(){
+//   const filteredData = this.state.plants.filter(item => {
+//     return item.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+//   })
+//   this.setState({ plants: filteredData})
+// }
+// handleChange = (e) => {
+//   this.setState({
+//     searchTerm: e.target.value
+//   })
+//   console.log(this.state.searchTerm)
+// }
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
       <main className="plant-list">
-        {this.state?.plants.plantsData?.map((plant) => (
+
+        {this.props.plants.map((plant) => (
           <div className="plant-card" key={plant.id}>
             <img className="plant-image" src={plant.img} alt={plant.name} />
             <div className="plant-details">

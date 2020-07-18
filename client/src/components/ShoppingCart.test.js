@@ -20,7 +20,7 @@ const plants = [{
 test('remove button removes item from cart', () => {
 	const { getByTestId } = render(<ShoppingCart cart={plants} />);
 	const cart = getByTestId('cart');
-	// const button = getByTestId('remove');
-	// fireEvent.click(button);
+	const button = getByTestId('remove');
+	fireEvent.click(button);
 	expect(cart).toHaveTextContent(/snake plant/i);
 });

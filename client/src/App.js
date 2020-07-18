@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
 import PlantList from "./components/PlantList";
+import Filter from "./components/Filter";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
 
@@ -47,7 +48,7 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <PlantList addToCart={addToCart} />}
+          render={() => <Filter addToCart={addToCart} />}
         />
         <Route
           path="/cart"
